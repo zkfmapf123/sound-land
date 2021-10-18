@@ -34,6 +34,11 @@ export const Column = st.div`
     flex : 1;
 `;
 
+export const ItemColumn =st.div`
+    display : grid;
+    grid-template-columns : 1fr 1fr 1fr;
+`;
+
 export const Image = st.img`
     width : 100px;
     hegiht : 100px;

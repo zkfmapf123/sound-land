@@ -9,3 +9,8 @@ export type MusicSeparateType =
 'Pop' |
 'Jass' |
 'My Favorite';
+
+export type MusicSeparateClickType<T> = {
+    music : T;
+    isClick : boolean;
+};

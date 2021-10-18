@@ -5,7 +5,7 @@
         - [ ] auth
             - [ ] logo
             - [ ] login
-            - [ ] join
+            - [ ] join - favorite list
             - [ ] forget ( node mailgun )
         - [ ] sidebar (left)
             - [ ] design

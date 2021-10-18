@@ -1,7 +1,9 @@
+import FavoriteItem from 'components/FavortieItem/FavoriteItem';
 import { useAuth } from 'moduels/hooks/useAuth';
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { Column, Input, ModalContainer, TouchButtonLabel, Image, TouchButton, Label } from './Style';
+import { MusicSeparateClickType, MusicSeparateType } from 'utils/Type';
+import { Column, Input, ModalContainer, TouchButtonLabel, Image, TouchButton, Label, ItemColumn } from './Style';
 
 interface Props {
     visible: boolean;
@@ -20,7 +22,42 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
     },
-}
+};
+
+let musicArr : MusicSeparateClickType<MusicSeparateType>[] = [
+    {
+        music: 'Balad',
+        isClick: false
+    },
+    {
+        music: 'Dance',
+        isClick : false
+    },
+    {
+        music: 'Indie',
+        isClick : false
+    },
+    {
+        music: 'Jass',
+        isClick : false
+    },
+    {
+        music: 'Pop',
+        isClick : false
+    },
+    {
+        music: 'R&B / Soul',
+        isClick : false
+    },
+    {
+        music: 'Rap / HipHop',
+        isClick : false
+    },
+    {
+        music: 'Rock / Metal',
+        isClick : false
+    },
+];
 
 const JoinModal = ({ visible, onPress }: Props) => {
     const [joinStep, setJoinStep] = useState<number>(0);
@@ -49,12 +86,6 @@ const JoinModal = ({ visible, onPress }: Props) => {
 
     };
 
-    // 닉네임, 태그, 썸네일
-    const FinalStepFinish = () =>{
-
-        console.log(user);
-    };
-
     const validPassword = () =>{
         const pw = user.getPassword();
         const pw2 = user.getPasswrod2();
@@ -69,6 +100,18 @@ const JoinModal = ({ visible, onPress }: Props) => {
 
         return '두 비밀번호가 다릅니다';
     };
+
+    // 닉네임, 태그, 썸네일
+    const FinalStepFinish = () =>{
+
+        console.log(user);
+    };
+
+    // favorite music click
+    const musicClick = (index : number) => {
+        const bool = musicArr[index].isClick;
+        musicArr[index].isClick = !bool;
+    }
 
     return (
         <Modal
@@ -121,7 +164,19 @@ const JoinModal = ({ visible, onPress }: Props) => {
                             {/** thumnail */}
 
                             {/** favorit music */}
-
+                            <ItemColumn>
+                                {
+                                    musicArr.map(function (item, index) {
+                                        return (
+                                            <FavoriteItem
+                                                key={index}
+                                                title={item.music}
+                                                onPress={() => musicClick(index)}
+                                                isClick={item.isClick}/>
+                                        )
+                                    })
+                                }
+                            </ItemColumn>
                             <TouchButton onClick={() => FinalStepFinish()}>
                                 <TouchButtonLabel>{'회원가입 완료하기'}</TouchButtonLabel>
                             </TouchButton>
