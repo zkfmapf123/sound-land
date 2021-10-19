@@ -8,7 +8,8 @@ export type MusicSeparateType =
 'Rock / Metal' |
 'Pop' |
 'Jass' |
-'My Favorite';
+'My Favorite' | 
+'Search';
 
 export type MusicSeparateClickType<T> = {
     music : T;

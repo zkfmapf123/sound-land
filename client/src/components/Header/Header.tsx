@@ -1,6 +1,5 @@
 import ProfileTop from 'components/ProfileTop/Profile.top';
-import Search from 'components/Search/Search';
-import React from 'react';
+import SearchBar from 'components/SearchBar/SearchBar';
 import { HeaderContainer } from './Style';
 
 interface Props{
@@ -11,7 +10,7 @@ const Header = ({placeholder} : Props) =>{
     return(
         <HeaderContainer>
             {/** search */}
-                <Search placeholder={placeholder}/>
+                <SearchBar placeholder={placeholder}/>
             {/** profile */}
                 <ProfileTop/>
         </HeaderContainer>

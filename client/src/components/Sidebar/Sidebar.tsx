@@ -6,11 +6,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { sideAction, SideReducerType } from 'moduels/reducer.index';
 import { MusicSeparateType } from 'utils/utils.index';
 import { MusicSeparate } from 'utils/String';
+import { useCookie } from 'moduels/hook.index';
 
 const Sidebar = () =>{
     const dispatch = useDispatch();
     const sideState = useSelector((state : SideReducerType) => state);
     const [sideClick, setSideClick] = useState<number>(0);
+
+    const beforeOnPress = (item : MusicSeparateType) =>{
+
+        dispatch(sideAction(item))
+    }
 
     useEffect(() => {
         const SIDE = sideState.sideReducer.title as MusicSeparateType;
@@ -36,7 +42,7 @@ const Sidebar = () =>{
             case 'Rock / Metal':
                 return setSideClick(6);
             default:
-                return setSideClick(0);
+                return setSideClick(-1);
         }
     }, [sideState]);
 
@@ -50,7 +56,7 @@ const Sidebar = () =>{
                             key={index}
                             label={item}
                             visible={index === sideClick ? true : false}
-                            onPress={()=>dispatch(sideAction(item))}/>
+                            onPress={()=>beforeOnPress(item)}/>
                     )
                 })
             }

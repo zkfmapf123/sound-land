@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import cookie from 'react-cookie';
 
 export function useCookie(){
@@ -10,8 +11,17 @@ export function useCookie(){
 
     };
 
+    function isCookie() :boolean{
+        if(!cookie){
+            return false;
+        };
+
+        return true;
+    }
+
     return {
         get,
-        set
+        set,
+        isCookie
     };
 };

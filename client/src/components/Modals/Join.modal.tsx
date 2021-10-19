@@ -1,9 +1,9 @@
-import FavoriteItem from 'components/FavortieItem/FavoriteItem';
+import Thumnail from 'components/Thumnail/Thumnail';
 import { useAuth } from 'moduels/hooks/useAuth';
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { MusicSeparateClickType, MusicSeparateType } from 'utils/Type';
-import { Column, Input, ModalContainer, TouchButtonLabel, Image, TouchButton, Label, ItemColumn } from './Style';
+import { UploadImage } from 'utils/utils.index';
+import { Column, Input, ModalContainer, TouchButtonLabel, Image, TouchButton, Label, ItemColumn, NotFlexColumn } from './Style';
 
 interface Props {
     visible: boolean;
@@ -16,55 +16,22 @@ const customStyles = {
         left: '50%',
         right: 'auto',
         bottom: 'auto',
-        width: 300,
-        height: 900,
-        borderRadius: 30,
+        width: 400,
+        height: 700,
+        borderRadius: 50,
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
     },
 };
 
-let musicArr : MusicSeparateClickType<MusicSeparateType>[] = [
-    {
-        music: 'Balad',
-        isClick: false
-    },
-    {
-        music: 'Dance',
-        isClick : false
-    },
-    {
-        music: 'Indie',
-        isClick : false
-    },
-    {
-        music: 'Jass',
-        isClick : false
-    },
-    {
-        music: 'Pop',
-        isClick : false
-    },
-    {
-        music: 'R&B / Soul',
-        isClick : false
-    },
-    {
-        music: 'Rap / HipHop',
-        isClick : false
-    },
-    {
-        music: 'Rock / Metal',
-        isClick : false
-    },
-];
-
 const JoinModal = ({ visible, onPress }: Props) => {
     const [joinStep, setJoinStep] = useState<number>(0);
+    const [registerErrorMessage, setRegisterErrorMesasge] = useState<string>('');
     const user = useAuth();
 
     useEffect(()=>{
         setJoinStep(0);
+        setRegisterErrorMesasge('');
     },[]);
 
     // 로그인, 비밀번호
@@ -86,6 +53,7 @@ const JoinModal = ({ visible, onPress }: Props) => {
 
     };
 
+    // 비밀번호 유효성 검사
     const validPassword = () =>{
         const pw = user.getPassword();
         const pw2 = user.getPasswrod2();
@@ -101,33 +69,34 @@ const JoinModal = ({ visible, onPress }: Props) => {
         return '두 비밀번호가 다릅니다';
     };
 
-    // 닉네임, 태그, 썸네일
-    const FinalStepFinish = () =>{
+    // 닉네임 유효성 검사
+    const validNickname = () =>{
+        const nicknaem = user.getName();
 
-        console.log(user);
+
     };
 
-    // favorite music click
-    const musicClick = (index : number) => {
-        const bool = musicArr[index].isClick;
-        musicArr[index].isClick = !bool;
+    // register
+    const onRegister = () =>{
+        setRegisterErrorMesasge('닉네임이 이미 존재');
     }
+
 
     return (
         <Modal
+            overlayClassName={'join-overlay'}
             style={customStyles}
             isOpen={visible}>
             <ModalContainer>
                 {/** Logo */}
-                <Column>
-                    <Image src={'logo.png'} />
-                </Column>
+                <Image src={'logo.png'} />
                 {/** main */}
                 {
                     joinStep === 0 ?
                         (<Column>
                             <Column 
                                 style={{
+                                    justifyContent: 'center'
                                 }}>
                                 <Input
                                     placeholder='이메일을 입력하세요'
@@ -147,47 +116,54 @@ const JoinModal = ({ visible, onPress }: Props) => {
                                     onChange={user.setPassword2} />
                                 <Label>{validPassword()}</Label>
                             </Column>
-                            <Column>
+                            <NotFlexColumn
+                                style={{
+                                    justifyContent:'flex-end'
+                                }}>
                                 <TouchButton onClick={() => firstStepFinish()}>
                                     <TouchButtonLabel>{'다음 단계로'}</TouchButtonLabel>
                                 </TouchButton>
                                 <TouchButton onClick={onPress}>
                                     <TouchButtonLabel>{'그만 두기'}</TouchButtonLabel>
                                 </TouchButton>
-                            </Column>
+                            </NotFlexColumn>
                         </Column>)
                         :
                         (<Column>
+                            <Column>
+                            {/** thumnail */}
+                            <Thumnail 
+                                onPress={()=>UploadImage()}
+                                images={undefined}/>
+                            {/** nickname */}
                             <Input
                                 type='text'
+                                placeholder='닉네임을 입력하세요'
                                 value={user.getName()} />
-                            {/** thumnail */}
-
-                            {/** favorit music */}
-                            <ItemColumn>
-                                {
-                                    musicArr.map(function (item, index) {
-                                        return (
-                                            <FavoriteItem
-                                                key={index}
-                                                title={item.music}
-                                                onPress={() => musicClick(index)}
-                                                isClick={item.isClick}/>
-                                        )
-                                    })
-                                }
-                            </ItemColumn>
-                            <TouchButton onClick={() => FinalStepFinish()}>
+                            {/** insta id */}
+                            <Input
+                                type='text'
+                                placeholder='인스타 그램 아이디'
+                                value={user.getName()} />
+                            </Column>
+                            <Label>{registerErrorMessage}</Label>
+                        <NotFlexColumn
+                            style={{
+                                justifyContent: 'flex-end'
+                            }}>
+                            <TouchButton onClick={() => onRegister()}>
                                 <TouchButtonLabel>{'회원가입 완료하기'}</TouchButtonLabel>
                             </TouchButton>
                             <TouchButton onClick={onPress}>
                                 <TouchButtonLabel>{'그만 두기'}</TouchButtonLabel>
                             </TouchButton>
+                        </NotFlexColumn>
                         </Column>)
                 }
             </ModalContainer>
         </Modal>
     )
 };
+
 
 export default JoinModal;

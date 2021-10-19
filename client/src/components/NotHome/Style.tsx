@@ -1,18 +1,18 @@
 import st from 'styled-components';
 
-export const SearchContainer= st.div`
+export const NotHomeContainer= st.div`
     display : flex;
     flex : 1;
     flex-direction :column;
 `;
 
-export const SearchColumn = st.div`
+export const NotHomeColumn = st.div`
     dispaly : flex;
     flex : 1;
     border: 1px solid red;
 `;
 
-export const SearchLabel = st.label`
+export const NotHomeLabel = st.label`
     font-size : 25px;
     color : white;
     font-weight : bold;

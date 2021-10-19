@@ -4,10 +4,9 @@ import { MusicSeparateType } from "utils/utils.index";
 type UserDto = {
     email :string;
     password : string;
-    favoriteTag : MusicSeparateType[] | undefined;
     thumnail :string;
     nickname : string;
-}
+};
 
 export function useAuth(){
     const [email, setEmails] = useState<string>('');
@@ -15,7 +14,6 @@ export function useAuth(){
     const [passwordCheck, setPasswordChecks] = useState<string>('');
     const [nickname, setNicknames] = useState<string>('');
     const [thumnail, setThumnails] = useState<string>('');
-    const [favoriteTag, setFavoriteTags] = useState<MusicSeparateType[] | undefined>(undefined);
 
     // user
     function getUser(){
@@ -25,7 +23,6 @@ export function useAuth(){
             password,
             nickname,
             thumnail,
-            favoriteTag
         }
     }
 

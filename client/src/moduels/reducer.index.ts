@@ -1,2 +1,2 @@
-export * from './side/Side.reducer';
-export * from './side/Side.action';
+export * from './reducer/side/Side.reducer';
+export * from './reducer/side/Side.action';

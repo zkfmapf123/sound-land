@@ -54,7 +54,7 @@ const LoginModal = ({ visible, onPress }: Props) => {
                         <TouchButtonLabel>{'로그인하기'}</TouchButtonLabel>
                     </TouchButton>
                     <TouchButton onClick={onPress}>
-                        <TouchButtonLabel>{'그만 두기'}</TouchButtonLabel>
+                        <TouchButtonLabel>{'회원가입 하기'}</TouchButtonLabel>
                     </TouchButton>
                 </Column>
             </ModalContainer>

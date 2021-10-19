@@ -31,8 +31,16 @@ export const TouchButtonLabel = st.p`
 export const Column = st.div`
     display :flex;
     flex-direction : column;
+    justify-content :center;
     flex : 1;
 `;
+
+export const NotFlexColumn = st.div`
+    display : flex;
+    flex-direction :column;
+    justify-content: felx-end;
+`;
+
 
 export const ItemColumn =st.div`
     display : grid;

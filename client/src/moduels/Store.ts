@@ -1,5 +1,5 @@
 import { combineReducers, createStore, Reducer, Store } from 'redux';
-import { sideReducer } from './reducer.index';
+import { sideReducer} from './reducer.index';
 
 const rootReducer :Reducer = combineReducers({
     sideReducer

@@ -1,13 +1,22 @@
 import Header from 'components/Header/Header';
+import Home from 'components/Home/Home';
+import NotHome from 'components/NotHome/NotHome';
+import Search from 'components/Search/Search';
 import Sidebar from 'components/Sidebar/Sidebar';
+import { useCookie } from 'moduels/hook.index';
 import { SideReducerType } from 'moduels/reducer.index';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { MusicSeparateType } from 'utils/Type';
 import { AppContainer, LeftColumn, RightBottomColum, RightColumn, RightTopColumn } from './Style';
 
 const Music = () =>{
     const reducer = useSelector((state:SideReducerType) => state);
+    const [screen, setScreen] = useState<MusicSeparateType>('Home');
 
-    console.log(reducer.sideReducer.title);
+    useEffect(()=>{
+        setScreen(reducer.sideReducer.title);
+    },[reducer])
 
     return(
         <AppContainer>
@@ -23,7 +32,10 @@ const Music = () =>{
                 </RightTopColumn>
                 {/** main */}
                 <RightBottomColum>
-                    {/** reducer에 따라서 view가 바뀐다 */}
+                    {
+                        screen === 'Home' ? <Home/> :
+                        screen === 'Search' ? <Search/> : <NotHome/>
+                    }
                 </RightBottomColum>
             </RightColumn>
         </AppContainer>
