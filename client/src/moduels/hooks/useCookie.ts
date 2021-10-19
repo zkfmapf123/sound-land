@@ -15,7 +15,7 @@ export function useCookie(){
         if(!cookie){
             return false;
         };
-
+        
         return true;
     }
 

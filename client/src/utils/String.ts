@@ -1,6 +1,6 @@
-import { MusicSeparateType } from "utils/utils.index";
+import { SideType } from "utils/utils.index";
 
-export const MusicSeparate : MusicSeparateType[] = [
+export const SideMenu : SideType[] = [
     'Home',
     'Balad',
     'Dance',

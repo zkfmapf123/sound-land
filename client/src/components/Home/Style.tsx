@@ -11,6 +11,8 @@ export const HomeColumn = st.div`
     display :flex;
     flex : 1;
     border :1px solid red;
+
+    width : 500px;
 `;
 
 export const HeaderLabel = st.label`

@@ -6,6 +6,7 @@ import { useSearch } from 'moduels/hook.index';
 interface Props {
     visible: boolean;
     onPress: () => void;
+    onForgetPassword : ()=>void;
 };
 
 const customStyles = {
@@ -15,14 +16,14 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         width: 300,
-        height: 500,
+        height: 600,
         borderRadius: 30,
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
     },
 }
 
-const LoginModal = ({ visible, onPress }: Props) => {
+const LoginModal = ({ visible, onPress, onForgetPassword }: Props) => {
     const email = useSearch('');
     const password = useSearch('');
 
@@ -55,6 +56,9 @@ const LoginModal = ({ visible, onPress }: Props) => {
                     </TouchButton>
                     <TouchButton onClick={onPress}>
                         <TouchButtonLabel>{'회원가입 하기'}</TouchButtonLabel>
+                    </TouchButton>
+                    <TouchButton onClick={onForgetPassword}>
+                        <TouchButtonLabel>{'비밀번호 찾기'}</TouchButtonLabel>
                     </TouchButton>
                 </Column>
             </ModalContainer>

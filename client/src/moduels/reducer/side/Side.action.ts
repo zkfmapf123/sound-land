@@ -1,4 +1,4 @@
-import { MusicSeparateType } from 'utils/utils.index';
+import { SideType } from "utils/utils.index";
 
 export const HOME = 'Home';
 export const MYFAVORITE = 'My Favorite';
@@ -17,7 +17,7 @@ export type searchOption = {
     separate : string;
 }
 
-export const sideAction = (value : MusicSeparateType, search ?: searchOption) => {
+export const sideAction = (value : SideType, search ?: searchOption) => {
 
     return {
         type : value,

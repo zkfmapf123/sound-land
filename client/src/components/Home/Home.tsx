@@ -17,11 +17,11 @@ const Home = ({recentlyAddSongs, latestAlbumRelease, topArtists} : Props) =>{
             </HomeColumn>
             <HeaderLabel>최근에 만들어진 앨범</HeaderLabel>
             <HomeColumn>
-                
+
             </HomeColumn>
             <HeaderLabel>최고의 아티스트</HeaderLabel>
             <HomeColumn>
-                
+
             </HomeColumn>
         </HomeContainer>
     )

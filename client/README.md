@@ -34,4 +34,6 @@
 
     - [ ] profile
 
-    - [ ] listenMusic
+    - [ ] My Favorite (찜한 내용들의 대해서 노래를 들을 수 있게끔)
+
+- [o] 10.20 구조 완성

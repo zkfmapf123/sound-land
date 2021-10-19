@@ -1,13 +1,9 @@
 import React from 'react';
-import {Label} from './Style';
+import {Image} from './Style';
 
-interface Props{
-    label :string;
-}
-
-const Title = ({label} :Props) =>{
+const Title = () =>{
     return (
-        <Label>{label}</Label>
+        <Image src={'logo2-black.jpeg'}/>
     )
 };
 

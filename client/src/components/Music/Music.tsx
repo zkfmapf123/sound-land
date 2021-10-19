@@ -1,18 +1,20 @@
 import Header from 'components/Header/Header';
 import Home from 'components/Home/Home';
+import Messanger from 'components/Messanger/Messanger';
 import NotHome from 'components/NotHome/NotHome';
+import Profile from 'components/Profile/Profile';
 import Search from 'components/Search/Search';
 import Sidebar from 'components/Sidebar/Sidebar';
-import { useCookie } from 'moduels/hook.index';
+import Upload from 'components/Upload/Upload';
 import { SideReducerType } from 'moduels/reducer.index';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { MusicSeparateType } from 'utils/Type';
+import { SideType } from 'utils/Type';
 import { AppContainer, LeftColumn, RightBottomColum, RightColumn, RightTopColumn } from './Style';
 
 const Music = () =>{
     const reducer = useSelector((state:SideReducerType) => state);
-    const [screen, setScreen] = useState<MusicSeparateType>('Home');
+    const [screen, setScreen] = useState<SideType>('Home');
 
     useEffect(()=>{
         setScreen(reducer.sideReducer.title);
@@ -34,10 +36,13 @@ const Music = () =>{
                 <RightBottomColum>
                     {
                         screen === 'Home' ? <Home/> :
-                        screen === 'Search' ? <Search/> : <NotHome/>
+                        screen === 'Search' ? <Search/> :
+                        screen === 'Profile' ? <Profile/> :
+                        screen === 'Upload' ? <Upload/> : <NotHome/>
                     }
                 </RightBottomColum>
             </RightColumn>
+            <Messanger/>
         </AppContainer>
     )
 };

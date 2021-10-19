@@ -1,10 +1,10 @@
 import { searchOption } from "moduels/reducer.index";
-import { MusicSeparateType } from "utils/utils.index";
+import { SideType } from "utils/utils.index";
 import { MYFAVORITE, BALAD, DANCE, HOME, JAZZ, POP, RAPHIPHOP, RNBSOUL, ROCKMETAL, SEARCH } from "./Side.action";
 
 export type SideReducerType = {
     sideReducer : {
-        title : MusicSeparateType,
+        title : SideType,
         data ?: searchOption;
     }
 };

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { SideItemButton, SideItemLabel } from './Style';
 import { AiFillCrown, AiFillCustomerService, AiFillEdit, AiFillGift, AiFillGold, AiFillGolden, AiFillHome, AiFillPicture, AiFillRobot, AiFillRocket, AiFillSliders, AiFillStar } from 'react-icons/ai';
-import {MusicSeparateType} from '../../utils/utils.index';
+import {SideType} from '../../utils/utils.index';
 
 interface Props{
-    label : MusicSeparateType;
+    label : SideType;
     visible :boolean;
     onPress:()=>void;
 }

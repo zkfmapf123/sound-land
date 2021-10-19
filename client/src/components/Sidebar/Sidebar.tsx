@@ -4,22 +4,21 @@ import Title from 'components/Title/Title';
 import SideItem from 'components/SideItem/SideItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { sideAction, SideReducerType } from 'moduels/reducer.index';
-import { MusicSeparateType } from 'utils/utils.index';
-import { MusicSeparate } from 'utils/String';
-import { useCookie } from 'moduels/hook.index';
+import { SideType } from 'utils/utils.index';
+import { SideMenu } from 'utils/String';
 
 const Sidebar = () =>{
     const dispatch = useDispatch();
     const sideState = useSelector((state : SideReducerType) => state);
     const [sideClick, setSideClick] = useState<number>(0);
 
-    const beforeOnPress = (item : MusicSeparateType) =>{
+    const beforeOnPress = (item : SideType) =>{
 
         dispatch(sideAction(item))
     }
 
     useEffect(() => {
-        const SIDE = sideState.sideReducer.title as MusicSeparateType;
+        const SIDE = sideState.sideReducer.title as SideType;
         switch (SIDE) {
             case 'My Favorite':
                 return setSideClick(9);
@@ -41,6 +40,8 @@ const Sidebar = () =>{
                 return setSideClick(3);
             case 'Rock / Metal':
                 return setSideClick(6);
+            case 'Profile':
+                return setSideClick(10);
             default:
                 return setSideClick(-1);
         }
@@ -48,9 +49,9 @@ const Sidebar = () =>{
 
     return (
         <AppContainer>
-            <Title label={'Sound Land'}/>
+            <Title/>
             {
-                MusicSeparate.map(function(item, index){
+                SideMenu.map(function(item, index){
                     return (
                         <SideItem 
                             key={index}
