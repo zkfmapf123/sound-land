@@ -11,7 +11,7 @@ const ProfileTopBar = ({user, onMoveProfile} : Props) =>{
 
     return(
         <ProfileTopBarContainer>
-            <Image src={'logo-white.jpeg'}/>
+            <Image src={'logo2-black.jpeg'}/>
             <Label>{'이동규님 반갑습니다'}</Label>
         </ProfileTopBarContainer>
     )

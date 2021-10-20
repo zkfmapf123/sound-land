@@ -1,27 +1,30 @@
-import { NotHomeColumn, NotHomeContainer, NotHomeLabel } from './Style';
+import { HeaderLabel, NotHomeContainer, NotHomeLeftColumn, NotHomeRightColumn, NotHomeRightInnerColumn } from './Style';
 
 interface Props{
 
 }
 
-const NotHome = ({} : Props) =>{
+const NotNotHome = ({} : Props) =>{
 
     return (
         <NotHomeContainer>
-            <NotHomeLabel>Songs</NotHomeLabel>
-            <NotHomeColumn>
+            {/** best song */}
+            <NotHomeLeftColumn>
+                <HeaderLabel>인기 음악</HeaderLabel>
+            </NotHomeLeftColumn>
+            {/** recently song, top artist */}
+            <NotHomeRightColumn>
+                <HeaderLabel>최근에 추가된 곡</HeaderLabel>
+                <NotHomeRightInnerColumn>
 
-            </NotHomeColumn>
-            <NotHomeLabel>Albums</NotHomeLabel>
-            <NotHomeColumn>
-                
-            </NotHomeColumn>
-            <NotHomeLabel>Artists</NotHomeLabel>
-            <NotHomeColumn>
-                
-            </NotHomeColumn>
-        </NotHomeContainer>   
+                </NotHomeRightInnerColumn>
+                <HeaderLabel>최고의 아티스트</HeaderLabel>
+                <NotHomeRightInnerColumn>
+
+                </NotHomeRightInnerColumn>
+            </NotHomeRightColumn>
+        </NotHomeContainer>  
     )
 };
 
-export default NotHome;
+export default NotNotHome;

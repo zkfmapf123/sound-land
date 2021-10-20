@@ -3,17 +3,43 @@ import st from 'styled-components';
 export const HomeContainer = st.div`
     display : flex;
     flex : 1;
-    flex-direction : column;
+    flex-direction : row;
 `;
 
 
 export const HomeColumn = st.div`
     display :flex;
     flex : 1;
-    border :1px solid red;
+    flex-direction : column;
+`;;
 
-    width : 500px;
+export const HomeLeftColumn =st.div`
+    display:flex;
+    flex : 0.5;
+    flex-direction :column;
+    border: 1px solid red;
 `;
+
+export const HomeRightColumn = st.div`
+    display:flex;
+    flex : 1;
+    flex-direction :column;
+`;
+
+export const HomeRightInnerColumn = st.div`
+    display :flex;
+    flex : 1;
+    flex-direction :row;
+    border: 1px solid red
+`;
+
+export const HomeLeftInnterColumn = st.div`
+    display : flex;
+    flex: 1;
+    flex-direction : row;
+    border: 1px solid red;
+`;
+
 
 export const HeaderLabel = st.label`
     color : white;

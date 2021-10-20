@@ -35,10 +35,9 @@ const Music = () =>{
                 {/** main */}
                 <RightBottomColum>
                     {
-                        screen === 'Home' ? <Home/> :
                         screen === 'Search' ? <Search/> :
                         screen === 'Profile' ? <Profile/> :
-                        screen === 'Upload' ? <Upload/> : <NotHome/>
+                        screen === 'Upload' ? <Upload/> : <Home/>
                     }
                 </RightBottomColum>
             </RightColumn>

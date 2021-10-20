@@ -15,7 +15,7 @@ const ProfileTop = () => {
 
     useEffect(()=>{
         // !auth.isCookie();
-        if(auth.isCookie()){
+        if(!auth.isCookie()){
             setIsLogin(true);
         };
 
