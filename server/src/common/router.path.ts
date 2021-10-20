@@ -1,6 +1,6 @@
 export default {
   AUTH : '/auth',
-  LOIGN : '/login',
+  LOGIN : '/login',
   JOIN : '/join',
   FORGET_EMAIL : '/email',
   FORGET_PASSWORD : '/password',

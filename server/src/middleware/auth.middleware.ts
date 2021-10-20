@@ -1,6 +1,6 @@
 import { Handler, NextFunction, Request, Response } from "express";
 import { UnauthorizationException } from "../common/exceptions";
-import { verify } from "../lib/jwt";
+//import { verify } from "../lib/jwt";
 
 export const verifyJsonWebToken = (): Handler => (req: Request, res: Response, next: NextFunction) => {
   const bearerToken = req.header("authorization");

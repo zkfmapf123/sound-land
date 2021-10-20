@@ -1,18 +1,25 @@
-import * as jwt from "jsonwebtoken";
-import config from "../config";
+import * as jwt from 'jsonwebtoken';
+import config from '../config';
 
-export interface JwyPayloadType{
+type JwtPayloadType = {
   email: string;
   privateId: number;
   nickname: string;
 };
 
-// jwt 만들 때 사용
-export const sign = (payload : JwyPayloadType, options?: jwt.SignOptions) => {
-  
+interface IJwt{
+  sign(payload : JwtPayloadType, options?: jwt.SignOptions): string;
+  verify(token : string, options?: jwt.SignOptions): string;
 };
 
-// jwt 풀 때 사용
-export const verify = (token: string, options?: jwt.SignOptions) => {
-  return jwt.verify(token, config.jwtScreet, options) as JwyPayloadType;
+class JwtRepo implements IJwt {
+  
+  sign(payload: JwtPayloadType, options?: jwt.SignOptions) : string{
+    return '';
+  }
+  
+  verify(token: string, options?: jwt.SignOptions) :string{
+    return '';
+  }
+
 }
