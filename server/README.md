@@ -1,7 +1,7 @@
 
 ### Modeling
 
-<img src='./public/database.png'/>
+<img src='public/database.png'/>
 
 ### REST API
 
