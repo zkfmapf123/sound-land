@@ -14,7 +14,7 @@
     - GET       http://localhost:3000/api/music/:part/album?offset=0&limit=20
     - GET       http://localhost:3000/api/music/:part/artist?offset=0&limit=20
     
-    - GET       http://localhost:3000/api/music/:part/:id(streaming)
+    - GET       http://localhost:3000/api/music/:part/:id (streaming)
     - PUT       http://localhost:3000/api/music/:part/:id/good
     - PUT       http://localhost:3000/api/music/:part/:id/bad
     
@@ -24,7 +24,7 @@
 
 - Favorite
     - GET       http://localhost:3000/api/favorite
-    - GET       http://localhost:3000/api/favorite/song/:id(streaming)
+    - GET       http://localhost:3000/api/favorite/song/:id (streaming)
     - DELETE    http://localhost:3000/api/favorite/song/:id
 
 - Profile   
