@@ -44,7 +44,6 @@ class App {
 
   public initMiddleware = () => {
     this.app.use(helmet());
-    this.app.use('/public',express.static('public'));
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
     this.app.use(cookieParser("leedonggyu"));

@@ -1,8 +1,3 @@
-
-### Modeling
-
-<img src='public/database.png'/>
-
 ### REST API
 
 - Auth
