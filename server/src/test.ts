@@ -1,5 +1,4 @@
 function logger(target, key, descriptor) {
-    console.log(target);
     console.log(key);
     console.log(descriptor);
     return descriptor;
@@ -7,8 +6,10 @@ function logger(target, key, descriptor) {
 
 class Cat {
     @logger
-    meow() { console.log('123') };
+    meow(name : string) { 
+        console.log(name);
+    };
 };
 
 const c = new Cat();
-c.meow();
+c.meow('leedonggyu');

@@ -4,6 +4,7 @@ create database songLand;
 create table Users(
     id int not null auto_increment,
     email varchar(50) not null unique,
+    password text not null,
     name varchar(50) not null unique,
     thumnail text,
     insta_url text null,

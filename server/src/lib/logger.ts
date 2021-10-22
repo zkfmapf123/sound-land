@@ -30,7 +30,7 @@ const logger = winston.createLogger({
     transports:[
         //info
         new winstonDaily({
-            level : "info",
+            level : 'info',
             datePattern : "YYYY-MM-DD",
             dirname : logDir,
             filename : "info.log",
@@ -40,7 +40,7 @@ const logger = winston.createLogger({
 
         //error
         new winstonDaily({
-            level : "error",
+            level : 'error',
             datePattern : "YYYY-MM-DD",
             dirname : logDir,
             filename : "Error.log",

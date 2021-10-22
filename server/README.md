@@ -1,3 +1,9 @@
+### Try
+    - [ ] redis
+    - [ ] stream
+    - [ ] logging 수정
+    - [ ] builder pattern mysql --> user.entity
+
 ### REST API
 
 - Auth
