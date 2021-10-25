@@ -8,7 +8,6 @@
 
 - Server
     - Nodejs
-    - Prisma
     - Mysql
     - Redis
 

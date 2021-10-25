@@ -2,7 +2,7 @@
     - [ ] redis
     - [ ] stream
     - [ ] logging 수정
-    - [ ] builder pattern mysql --> user.entity
+    - [ ] database connection test
 
 ### REST API
 

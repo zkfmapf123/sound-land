@@ -1,9 +1,10 @@
 import { Router, Request, Response} from "express";
-import { getBody } from "~/common/decorator.index";
+import { DatabaseRepository } from "../../common/index";
 import { Controller } from "../../common/interfaces/controller";
 import routerPath from "../../common/router.path";
 
 export class AuthController implements Controller{
+    dbConn : DatabaseRepository = new DatabaseRepository();
     path: string = routerPath.AUTH;
     router: Router = Router();
 

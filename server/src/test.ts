@@ -1,15 +1,18 @@
-function logger(target, key, descriptor) {
-    console.log(key);
-    console.log(descriptor);
-    return descriptor;
-}
+import { DatabaseRepository } from "./common";
 
-class Cat {
-    @logger
-    meow(name : string) { 
-        console.log(name);
-    };
-};
+const dbConn = new DatabaseRepository();
 
-const c = new Cat();
-c.meow('leedonggyu');
+(async()=>{
+
+    // test transacti
+    const conn = await dbConn.getPool().getConnection();
+    await conn.beginTransaction();
+
+    await conn.commit();
+
+    await conn.rollback();
+    conn.release();
+
+    // get result
+
+})();

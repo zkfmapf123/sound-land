@@ -1,6 +1,10 @@
-import eventEmitter from 'events';
 import mysql2 from 'mysql2/promise';
 import config from "../../config";
+
+type dbParamsType = {
+    query : string;
+    params : string;
+}
 
 const pool = mysql2.createPool({
     host: config.mysqlHost,
@@ -14,30 +18,34 @@ const pool = mysql2.createPool({
 
 export type dbConnectionType = mysql2.PoolConnection;
 
-class DatabaseRepository{
+export class DatabaseRepository{
 
-    async setConnection() : Promise<dbConnectionType>{
-        return (await pool.getConnection());
+    private dbPool : mysql2.Pool = pool;
+
+    // use transaction
+    public getPool() : mysql2.Pool{
+        return this.dbPool;
     }
 
-    // public async getFormatStringToArr(params : string) : Promise<Array<string>>{
-    //     return (params.split(",").map(function(item){
-    //         return item.trim();
-    //     }));
-    // }
+    private async getFormatStringToArr(params : string) : Promise<Array<string>>{
+        return (params.split(",").map(function(item){
+            return item.trim();
+        }));
+    }
 
-    // public async getResult({query, params} : dbParamsType){
-    //     const dbConn = await pool.getConnection();
-    //     try{
-    //         const paramsArr = await this.getFormatStringToArr(params);
-    //         const result = await dbConn.query(query,paramsArr);
-    //         return result[0];
-    //     }catch(e){
-    //         throw new Error(e);
-    //     }finally{  
-    //         dbConn.release();
-    //     }
-    // };
+    // single auto commit
+    public async getResult({query, params} : dbParamsType){
+        const dbConn = await this.dbPool.getConnection();
+        try{
+            const paramsArr = await this.getFormatStringToArr(params);
+            const result = await dbConn.query(query,paramsArr);
+            return result[0];
+        }catch(e){
+            throw new Error(e);
+        }finally{  
+            dbConn.release();
+        }
+    };
 };
 
 export default new DatabaseRepository();
